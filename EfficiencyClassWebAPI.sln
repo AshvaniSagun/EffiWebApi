@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfficiencyClassWebAPI", "EfficiencyClassWebAPI\EfficiencyClassWebAPI.csproj", "{DE5AF9BB-FED0-4EE4-A643-347D1E09FA2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EfficiencyClass.UnitTests", "EfficiencyClass.UnitTests\EfficiencyClass.UnitTests.csproj", "{8D4BE33C-F16E-4AAF-8740-C6779736F05D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DE5AF9BB-FED0-4EE4-A643-347D1E09FA2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE5AF9BB-FED0-4EE4-A643-347D1E09FA2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE5AF9BB-FED0-4EE4-A643-347D1E09FA2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE5AF9BB-FED0-4EE4-A643-347D1E09FA2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D4BE33C-F16E-4AAF-8740-C6779736F05D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D4BE33C-F16E-4AAF-8740-C6779736F05D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D4BE33C-F16E-4AAF-8740-C6779736F05D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D4BE33C-F16E-4AAF-8740-C6779736F05D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {45789F75-A700-4B49-81B7-37DACF012376}
+	EndGlobalSection
+EndGlobal

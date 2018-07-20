@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5dae6133ad8245078342a7755f1f08f2" Name="Diagram1">
+        <EntityTypeShape EntityType="efficiencyclassdevModel.CommonCo2Range_old" Width="1.5" PointX="8.25" PointY="34.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="efficiencyclassdevModel.EfficiencyClassRange" Width="1.5" PointX="8.25" PointY="29.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="efficiencyclassdevModel.Formula" Width="1.5" PointX="11.25" PointY="29.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="efficiencyclassdevModel.FormulaDependencyDetail" Width="1.5" PointX="19.5" PointY="27" IsExpanded="true" />
+        <EntityTypeShape EntityType="efficiencyclassdevModel.FuelTypeConversionvalue" Width="1.5" PointX="3" PointY="29.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="efficiencyclassdevModel.Market" Width="1.5" PointX="0.75" PointY="29.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="efficiencyclassdevModel.Market2MarketTypeParameterGroup" Width="1.5" PointX="6" PointY="28.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="efficiencyclassdevModel.MarketType" Width="1.5" PointX="3.75" PointY="22" IsExpanded="true" />
+        <EntityTypeShape EntityType="efficiencyclassdevModel.ParameterGroupMaster" Width="1.5" PointX="3.75" PointY="34.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="efficiencyclassdevModel.RangeValue_old" Width="1.5" PointX="3" PointY="40.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="efficiencyclassdevModel.Role" Width="1.5" PointX="3.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="efficiencyclassdevModel.SpecMarketCO2Range_old" Width="1.5" PointX="11.25" PointY="34.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="efficiencyclassdevModel.SpecMarketFuelTypeRange_old" Width="1.5" PointX="8.25" PointY="39.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="efficiencyclassdevModel.StagedEfficiencyClassRange" Width="1.5" PointX="8.25" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="efficiencyclassdevModel.StagedFormula" Width="1.5" PointX="11.25" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="efficiencyclassdevModel.StagedFormulaDependencyDetail" Width="1.5" PointX="16.5" PointY="27.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="efficiencyclassdevModel.StagedVariable" Width="1.5" PointX="14.25" PointY="29.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="efficiencyclassdevModel.StagedWeightSegmentCo2" Width="1.5" PointX="8.25" PointY="60.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="efficiencyclassdevModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="efficiencyclassdevModel.UserDetail" Width="1.5" PointX="0.75" PointY="25.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="efficiencyclassdevModel.UserMarket" Width="1.5" PointX="3" PointY="25.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="efficiencyclassdevModel.UserRole" Width="1.5" PointX="6" PointY="24.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="efficiencyclassdevModel.Variable" Width="1.5" PointX="14.25" PointY="24.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="efficiencyclassdevModel.VariableType" Width="1.5" PointX="12" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="efficiencyclassdevModel.WeightSegmentCo2" Width="1.5" PointX="8.25" PointY="68.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="efficiencyclassdevModel.EfficiencyClassRangeold" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="efficiencyclassdevModel.Market2MarketTypeParameterGroup_old" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK_CommonCo2Range_MMId" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK_CommonCO2RANGE_ValueId" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK_Range_MMID" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK_Range_VariableTypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK_Formula_MMId" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK_FormulaDependencyDetails_FormulaID" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK_Formulas_VariableId" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK_FormulaDependencyDetails_VariableId" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK_FuelTypeConversionvalues_MarketId" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK_FuelTypeConversionvalues_VariableId" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK__UserMarke__Marke__5BAD9CC8" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK_Market2MarketTypeParameterGroup_MarketId" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK_RangeValues_MarketId" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK__StagedEffi__MMID__1A9EF37A" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK__StagedForm__MMId__36470DEF" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK__StagedVari__MMId__24285DB4" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK__StagedWeig__MMID__1F63A897" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK_Market2MarketTypeParameterGroup_MarketTypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK_Market2MarketTypeParameterGroup_ParameterGroupId" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK_SpecMarketCO2Rangee_MMId" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK_SpecMarketFuelTypeRange_MMID" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK_Variable_Market2MarketTypeParameterGroup" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK_WeightSegmentCO2_MMID" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK_VariableType_ParameterGroupId" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK_SpecMarketCO2Range_ValueId" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK_SpecMarketFuelTypeRange_ValueId" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK__UserRole__RoleId__57DD0BE4" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK_SpecMarketFuelTypeRangee_VariableTypeId" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK__StagedEff__Varia__19AACF41" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK__StagedFor__Formu__39237A9A" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK__StagedFor__Varia__3552E9B6" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK__StagedFor__Varia__3A179ED3" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK__StagedVar__Varia__251C81ED" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK__UserMarke__UserI__5AB9788F" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK__UserRole__UserId__56E8E7AB" ManuallyRouted="false" />
+        <AssociationConnector Association="efficiencyclassdevModel.FK_Variable_VariableTypeId" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

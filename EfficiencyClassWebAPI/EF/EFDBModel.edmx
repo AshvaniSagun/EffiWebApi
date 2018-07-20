@@ -1,0 +1,2465 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="efficiencyclassdevModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CommonCo2Range_old">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MMId" Type="bigint" Nullable="false" />
+          <Property Name="StartRange" Type="varchar" MaxLength="255" />
+          <Property Name="EndRange" Type="varchar" MaxLength="255" />
+          <Property Name="ValueId" Type="int" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EfficiencyClassRange">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VariableTypeId" Type="int" />
+          <Property Name="MMID" Type="bigint" Nullable="false" />
+          <Property Name="StartRange" Type="decimal" Precision="12" Scale="4" Nullable="false" />
+          <Property Name="EndRange" Type="decimal" Precision="12" Scale="4" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="ECValue" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'efficiencyclassdev.dbo.EfficiencyClassRangeold' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="EfficiencyClassRangeold">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="MMID" />
+            <PropertyRef Name="StartRange" />
+            <PropertyRef Name="EndRange" />
+            <PropertyRef Name="CreatedBy" />
+            <PropertyRef Name="UpdatedBy" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VariableTypeId" Type="int" />
+          <Property Name="MMID" Type="bigint" Nullable="false" />
+          <Property Name="StartRange" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="EndRange" Type="decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="ValueId" Type="int" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Formula">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MMId" Type="bigint" Nullable="false" />
+          <Property Name="FormulaDefinition" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="VariableId" Type="bigint" Nullable="false" />
+          <Property Name="FormulaPriority" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FormulaDependencyDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormulaId" Type="int" Nullable="false" />
+          <Property Name="VariableId" Type="bigint" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FuelTypeConversionvalue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MarketId" Type="int" Nullable="false" />
+          <Property Name="VariableId" Type="bigint" />
+          <Property Name="FuelType" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ConversionValue" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Market">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SpecMarket" Type="int" Nullable="false" />
+          <Property Name="MarketName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Market2MarketTypeParameterGroup">
+          <Key>
+            <PropertyRef Name="MMId" />
+          </Key>
+          <Property Name="MMId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MarketId" Type="int" Nullable="false" />
+          <Property Name="MarketTypeId" Type="int" Nullable="false" />
+          <Property Name="MYear" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="ParameterGroupId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'efficiencyclassdev.dbo.Market2MarketTypeParameterGroup_old' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Market2MarketTypeParameterGroup_old">
+          <Key>
+            <PropertyRef Name="MMId" />
+            <PropertyRef Name="MarketId" />
+            <PropertyRef Name="MarketTypeId" />
+            <PropertyRef Name="ParameterGroupId" />
+            <PropertyRef Name="MYear" />
+            <PropertyRef Name="CreatedBy" />
+            <PropertyRef Name="UpdatedBy" />
+          </Key>
+          <Property Name="MMId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MarketId" Type="int" Nullable="false" />
+          <Property Name="MarketTypeId" Type="int" Nullable="false" />
+          <Property Name="ParameterGroupId" Type="int" Nullable="false" />
+          <Property Name="MYear" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MarketType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MarketTypeName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ParameterGroupMaster">
+          <Key>
+            <PropertyRef Name="ParameterGroupId" />
+          </Key>
+          <Property Name="ParameterGroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParameterGroupName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="RangeValue_old">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MarketId" Type="int" Nullable="false" />
+          <Property Name="ECValue" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SpecMarketCO2Range_old">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MMId" Type="bigint" Nullable="false" />
+          <Property Name="StartRange" Type="varchar" MaxLength="255" />
+          <Property Name="EndRange" Type="varchar" MaxLength="255" />
+          <Property Name="ValueId" Type="int" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SpecMarketFuelTypeRange_old">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VariableTypeId" Type="int" Nullable="false" />
+          <Property Name="MMID" Type="bigint" Nullable="false" />
+          <Property Name="StartRange" Type="varchar" MaxLength="255" />
+          <Property Name="EndRange" Type="varchar" MaxLength="255" />
+          <Property Name="ValueId" Type="int" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="StagedEfficiencyClassRange">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VariableTypeId" Type="int" />
+          <Property Name="MMID" Type="bigint" Nullable="false" />
+          <Property Name="StartRange" Type="decimal" Precision="12" Scale="4" Nullable="false" />
+          <Property Name="EndRange" Type="decimal" Precision="12" Scale="4" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="ECValue" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="StagedFormula">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MMId" Type="bigint" Nullable="false" />
+          <Property Name="FormulaDefinition" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="VariableId" Type="bigint" Nullable="false" />
+          <Property Name="FormulaPriority" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="StagedFormulaDependencyDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormulaId" Type="int" Nullable="false" />
+          <Property Name="VariableId" Type="bigint" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="StagedVariable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VariableName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="VariableValue" Type="varchar" MaxLength="255" />
+          <Property Name="MMId" Type="bigint" Nullable="false" />
+          <Property Name="VariableTypeId" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="StagedWeightSegmentCo2">
+          <Key>
+            <PropertyRef Name="EwId" />
+          </Key>
+          <Property Name="EwId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MMID" Type="bigint" Nullable="false" />
+          <Property Name="PNO12" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="PWeight" Type="varchar" MaxLength="255" />
+          <Property Name="SegmentCo2" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="UserDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CDSID" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="70" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserMarket">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="MarketId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="MarketId" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Variable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="VariableName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="VariableValue" Type="varchar" MaxLength="255" />
+          <Property Name="MMId" Type="bigint" Nullable="false" />
+          <Property Name="VariableTypeId" Type="int" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="VariableType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParameterGroupId" Type="int" Nullable="false" />
+          <Property Name="VariableTypeName" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <EntityType Name="WeightSegmentCo2">
+          <Key>
+            <PropertyRef Name="EwId" />
+          </Key>
+          <Property Name="EwId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MMID" Type="bigint" Nullable="false" />
+          <Property Name="PNO12" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="PWeight" Type="varchar" MaxLength="255" />
+          <Property Name="SegmentCo2" Type="varchar" MaxLength="255" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" />
+          <Property Name="UpdatedBy" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" />
+        </EntityType>
+        <Association Name="FK__StagedEff__Varia__19AACF41">
+          <End Role="VariableType" Type="Self.VariableType" Multiplicity="0..1" />
+          <End Role="StagedEfficiencyClassRange" Type="Self.StagedEfficiencyClassRange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VariableType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StagedEfficiencyClassRange">
+              <PropertyRef Name="VariableTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StagedEffi__MMID__1A9EF37A">
+          <End Role="Market2MarketTypeParameterGroup" Type="Self.Market2MarketTypeParameterGroup" Multiplicity="1" />
+          <End Role="StagedEfficiencyClassRange" Type="Self.StagedEfficiencyClassRange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market2MarketTypeParameterGroup">
+              <PropertyRef Name="MMId" />
+            </Principal>
+            <Dependent Role="StagedEfficiencyClassRange">
+              <PropertyRef Name="MMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StagedFor__Formu__39237A9A">
+          <End Role="StagedFormula" Type="Self.StagedFormula" Multiplicity="1" />
+          <End Role="StagedFormulaDependencyDetail" Type="Self.StagedFormulaDependencyDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StagedFormula">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StagedFormulaDependencyDetail">
+              <PropertyRef Name="FormulaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StagedFor__Varia__3552E9B6">
+          <End Role="StagedVariable" Type="Self.StagedVariable" Multiplicity="1" />
+          <End Role="StagedFormula" Type="Self.StagedFormula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StagedVariable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StagedFormula">
+              <PropertyRef Name="VariableId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StagedFor__Varia__3A179ED3">
+          <End Role="StagedVariable" Type="Self.StagedVariable" Multiplicity="1" />
+          <End Role="StagedFormulaDependencyDetail" Type="Self.StagedFormulaDependencyDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StagedVariable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StagedFormulaDependencyDetail">
+              <PropertyRef Name="VariableId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StagedForm__MMId__36470DEF">
+          <End Role="Market2MarketTypeParameterGroup" Type="Self.Market2MarketTypeParameterGroup" Multiplicity="1" />
+          <End Role="StagedFormula" Type="Self.StagedFormula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market2MarketTypeParameterGroup">
+              <PropertyRef Name="MMId" />
+            </Principal>
+            <Dependent Role="StagedFormula">
+              <PropertyRef Name="MMId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StagedVar__Varia__251C81ED">
+          <End Role="VariableType" Type="Self.VariableType" Multiplicity="1" />
+          <End Role="StagedVariable" Type="Self.StagedVariable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VariableType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StagedVariable">
+              <PropertyRef Name="VariableTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StagedVari__MMId__24285DB4">
+          <End Role="Market2MarketTypeParameterGroup" Type="Self.Market2MarketTypeParameterGroup" Multiplicity="1" />
+          <End Role="StagedVariable" Type="Self.StagedVariable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market2MarketTypeParameterGroup">
+              <PropertyRef Name="MMId" />
+            </Principal>
+            <Dependent Role="StagedVariable">
+              <PropertyRef Name="MMId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StagedWeig__MMID__1F63A897">
+          <End Role="Market2MarketTypeParameterGroup" Type="Self.Market2MarketTypeParameterGroup" Multiplicity="1" />
+          <End Role="StagedWeightSegmentCo2" Type="Self.StagedWeightSegmentCo2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market2MarketTypeParameterGroup">
+              <PropertyRef Name="MMId" />
+            </Principal>
+            <Dependent Role="StagedWeightSegmentCo2">
+              <PropertyRef Name="MMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserMarke__Marke__5BAD9CC8">
+          <End Role="Market" Type="Self.Market" Multiplicity="1" />
+          <End Role="UserMarket" Type="Self.UserMarket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMarket">
+              <PropertyRef Name="MarketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserMarke__UserI__5AB9788F">
+          <End Role="UserDetail" Type="Self.UserDetail" Multiplicity="1" />
+          <End Role="UserMarket" Type="Self.UserMarket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMarket">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserRole__RoleId__57DD0BE4">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserRole__UserId__56E8E7AB">
+          <End Role="UserDetail" Type="Self.UserDetail" Multiplicity="1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommonCo2Range_MMId">
+          <End Role="Market2MarketTypeParameterGroup" Type="Self.Market2MarketTypeParameterGroup" Multiplicity="1" />
+          <End Role="CommonCo2Range_old" Type="Self.CommonCo2Range_old" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market2MarketTypeParameterGroup">
+              <PropertyRef Name="MMId" />
+            </Principal>
+            <Dependent Role="CommonCo2Range_old">
+              <PropertyRef Name="MMId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommonCO2RANGE_ValueId">
+          <End Role="RangeValue_old" Type="Self.RangeValue_old" Multiplicity="0..1" />
+          <End Role="CommonCo2Range_old" Type="Self.CommonCo2Range_old" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RangeValue_old">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CommonCo2Range_old">
+              <PropertyRef Name="ValueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Formula_MMId">
+          <End Role="Market2MarketTypeParameterGroup" Type="Self.Market2MarketTypeParameterGroup" Multiplicity="1" />
+          <End Role="Formula" Type="Self.Formula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market2MarketTypeParameterGroup">
+              <PropertyRef Name="MMId" />
+            </Principal>
+            <Dependent Role="Formula">
+              <PropertyRef Name="MMId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormulaDependencyDetails_FormulaID">
+          <End Role="Formula" Type="Self.Formula" Multiplicity="1" />
+          <End Role="FormulaDependencyDetail" Type="Self.FormulaDependencyDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Formula">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FormulaDependencyDetail">
+              <PropertyRef Name="FormulaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormulaDependencyDetails_VariableId">
+          <End Role="Variable" Type="Self.Variable" Multiplicity="1" />
+          <End Role="FormulaDependencyDetail" Type="Self.FormulaDependencyDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Variable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormulaDependencyDetail">
+              <PropertyRef Name="VariableId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Formulas_VariableId">
+          <End Role="Variable" Type="Self.Variable" Multiplicity="1" />
+          <End Role="Formula" Type="Self.Formula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Variable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Formula">
+              <PropertyRef Name="VariableId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FuelTypeConversionvalues_MarketId">
+          <End Role="Market" Type="Self.Market" Multiplicity="1" />
+          <End Role="FuelTypeConversionvalue" Type="Self.FuelTypeConversionvalue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FuelTypeConversionvalue">
+              <PropertyRef Name="MarketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FuelTypeConversionvalues_VariableId">
+          <End Role="Variable" Type="Self.Variable" Multiplicity="0..1" />
+          <End Role="FuelTypeConversionvalue" Type="Self.FuelTypeConversionvalue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Variable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FuelTypeConversionvalue">
+              <PropertyRef Name="VariableId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Market2MarketTypeParameterGroup_MarketId">
+          <End Role="Market" Type="Self.Market" Multiplicity="1" />
+          <End Role="Market2MarketTypeParameterGroup" Type="Self.Market2MarketTypeParameterGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Market2MarketTypeParameterGroup">
+              <PropertyRef Name="MarketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Market2MarketTypeParameterGroup_MarketTypeId">
+          <End Role="MarketType" Type="Self.MarketType" Multiplicity="1" />
+          <End Role="Market2MarketTypeParameterGroup" Type="Self.Market2MarketTypeParameterGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MarketType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Market2MarketTypeParameterGroup">
+              <PropertyRef Name="MarketTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Market2MarketTypeParameterGroup_ParameterGroupId">
+          <End Role="ParameterGroupMaster" Type="Self.ParameterGroupMaster" Multiplicity="0..1" />
+          <End Role="Market2MarketTypeParameterGroup" Type="Self.Market2MarketTypeParameterGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParameterGroupMaster">
+              <PropertyRef Name="ParameterGroupId" />
+            </Principal>
+            <Dependent Role="Market2MarketTypeParameterGroup">
+              <PropertyRef Name="ParameterGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Range_MMID">
+          <End Role="Market2MarketTypeParameterGroup" Type="Self.Market2MarketTypeParameterGroup" Multiplicity="1" />
+          <End Role="EfficiencyClassRange" Type="Self.EfficiencyClassRange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market2MarketTypeParameterGroup">
+              <PropertyRef Name="MMId" />
+            </Principal>
+            <Dependent Role="EfficiencyClassRange">
+              <PropertyRef Name="MMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Range_VariableTypeId">
+          <End Role="VariableType" Type="Self.VariableType" Multiplicity="0..1" />
+          <End Role="EfficiencyClassRange" Type="Self.EfficiencyClassRange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VariableType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EfficiencyClassRange">
+              <PropertyRef Name="VariableTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RangeValues_MarketId">
+          <End Role="Market" Type="Self.Market" Multiplicity="1" />
+          <End Role="RangeValue_old" Type="Self.RangeValue_old" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RangeValue_old">
+              <PropertyRef Name="MarketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecMarketCO2Range_ValueId">
+          <End Role="RangeValue_old" Type="Self.RangeValue_old" Multiplicity="0..1" />
+          <End Role="SpecMarketCO2Range_old" Type="Self.SpecMarketCO2Range_old" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RangeValue_old">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpecMarketCO2Range_old">
+              <PropertyRef Name="ValueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecMarketCO2Rangee_MMId">
+          <End Role="Market2MarketTypeParameterGroup" Type="Self.Market2MarketTypeParameterGroup" Multiplicity="1" />
+          <End Role="SpecMarketCO2Range_old" Type="Self.SpecMarketCO2Range_old" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market2MarketTypeParameterGroup">
+              <PropertyRef Name="MMId" />
+            </Principal>
+            <Dependent Role="SpecMarketCO2Range_old">
+              <PropertyRef Name="MMId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecMarketFuelTypeRange_MMID">
+          <End Role="Market2MarketTypeParameterGroup" Type="Self.Market2MarketTypeParameterGroup" Multiplicity="1" />
+          <End Role="SpecMarketFuelTypeRange_old" Type="Self.SpecMarketFuelTypeRange_old" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market2MarketTypeParameterGroup">
+              <PropertyRef Name="MMId" />
+            </Principal>
+            <Dependent Role="SpecMarketFuelTypeRange_old">
+              <PropertyRef Name="MMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecMarketFuelTypeRange_ValueId">
+          <End Role="RangeValue_old" Type="Self.RangeValue_old" Multiplicity="0..1" />
+          <End Role="SpecMarketFuelTypeRange_old" Type="Self.SpecMarketFuelTypeRange_old" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RangeValue_old">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpecMarketFuelTypeRange_old">
+              <PropertyRef Name="ValueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecMarketFuelTypeRangee_VariableTypeId">
+          <End Role="VariableType" Type="Self.VariableType" Multiplicity="1" />
+          <End Role="SpecMarketFuelTypeRange_old" Type="Self.SpecMarketFuelTypeRange_old" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VariableType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpecMarketFuelTypeRange_old">
+              <PropertyRef Name="VariableTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Variable_Market2MarketTypeParameterGroup">
+          <End Role="Market2MarketTypeParameterGroup" Type="Self.Market2MarketTypeParameterGroup" Multiplicity="1" />
+          <End Role="Variable" Type="Self.Variable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market2MarketTypeParameterGroup">
+              <PropertyRef Name="MMId" />
+            </Principal>
+            <Dependent Role="Variable">
+              <PropertyRef Name="MMId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Variable_VariableTypeId">
+          <End Role="VariableType" Type="Self.VariableType" Multiplicity="1" />
+          <End Role="Variable" Type="Self.Variable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VariableType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Variable">
+              <PropertyRef Name="VariableTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VariableType_ParameterGroupId">
+          <End Role="ParameterGroupMaster" Type="Self.ParameterGroupMaster" Multiplicity="1" />
+          <End Role="VariableType" Type="Self.VariableType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParameterGroupMaster">
+              <PropertyRef Name="ParameterGroupId" />
+            </Principal>
+            <Dependent Role="VariableType">
+              <PropertyRef Name="ParameterGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WeightSegmentCO2_MMID">
+          <End Role="Market2MarketTypeParameterGroup" Type="Self.Market2MarketTypeParameterGroup" Multiplicity="1" />
+          <End Role="WeightSegmentCo2" Type="Self.WeightSegmentCo2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market2MarketTypeParameterGroup">
+              <PropertyRef Name="MMId" />
+            </Principal>
+            <Dependent Role="WeightSegmentCo2">
+              <PropertyRef Name="MMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="efficiencyclassdevModelStoreContainer">
+          <EntitySet Name="CommonCo2Range_old" EntityType="Self.CommonCo2Range_old" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EfficiencyClassRange" EntityType="Self.EfficiencyClassRange" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Formula" EntityType="Self.Formula" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormulaDependencyDetail" EntityType="Self.FormulaDependencyDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FuelTypeConversionvalue" EntityType="Self.FuelTypeConversionvalue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Market" EntityType="Self.Market" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Market2MarketTypeParameterGroup" EntityType="Self.Market2MarketTypeParameterGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MarketType" EntityType="Self.MarketType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParameterGroupMaster" EntityType="Self.ParameterGroupMaster" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RangeValue_old" EntityType="Self.RangeValue_old" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SpecMarketCO2Range_old" EntityType="Self.SpecMarketCO2Range_old" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SpecMarketFuelTypeRange_old" EntityType="Self.SpecMarketFuelTypeRange_old" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StagedEfficiencyClassRange" EntityType="Self.StagedEfficiencyClassRange" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StagedFormula" EntityType="Self.StagedFormula" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StagedFormulaDependencyDetail" EntityType="Self.StagedFormulaDependencyDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StagedVariable" EntityType="Self.StagedVariable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StagedWeightSegmentCo2" EntityType="Self.StagedWeightSegmentCo2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserDetail" EntityType="Self.UserDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserMarket" EntityType="Self.UserMarket" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Variable" EntityType="Self.Variable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VariableType" EntityType="Self.VariableType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WeightSegmentCo2" EntityType="Self.WeightSegmentCo2" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EfficiencyClassRangeold" EntityType="Self.EfficiencyClassRangeold" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [EfficiencyClassRangeold].[Id] AS [Id], 
+    [EfficiencyClassRangeold].[VariableTypeId] AS [VariableTypeId], 
+    [EfficiencyClassRangeold].[MMID] AS [MMID], 
+    [EfficiencyClassRangeold].[StartRange] AS [StartRange], 
+    [EfficiencyClassRangeold].[EndRange] AS [EndRange], 
+    [EfficiencyClassRangeold].[ValueId] AS [ValueId], 
+    [EfficiencyClassRangeold].[CreatedBy] AS [CreatedBy], 
+    [EfficiencyClassRangeold].[CreatedOn] AS [CreatedOn], 
+    [EfficiencyClassRangeold].[UpdatedBy] AS [UpdatedBy], 
+    [EfficiencyClassRangeold].[UpdatedOn] AS [UpdatedOn]
+    FROM [dbo].[EfficiencyClassRangeold] AS [EfficiencyClassRangeold]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Market2MarketTypeParameterGroup_old" EntityType="Self.Market2MarketTypeParameterGroup_old" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Market2MarketTypeParameterGroup_old].[MMId] AS [MMId], 
+    [Market2MarketTypeParameterGroup_old].[MarketId] AS [MarketId], 
+    [Market2MarketTypeParameterGroup_old].[MarketTypeId] AS [MarketTypeId], 
+    [Market2MarketTypeParameterGroup_old].[ParameterGroupId] AS [ParameterGroupId], 
+    [Market2MarketTypeParameterGroup_old].[MYear] AS [MYear], 
+    [Market2MarketTypeParameterGroup_old].[CreatedBy] AS [CreatedBy], 
+    [Market2MarketTypeParameterGroup_old].[CreatedOn] AS [CreatedOn], 
+    [Market2MarketTypeParameterGroup_old].[UpdatedBy] AS [UpdatedBy], 
+    [Market2MarketTypeParameterGroup_old].[UpdatedOn] AS [UpdatedOn]
+    FROM [dbo].[Market2MarketTypeParameterGroup_old] AS [Market2MarketTypeParameterGroup_old]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__StagedEff__Varia__19AACF41" Association="Self.FK__StagedEff__Varia__19AACF41">
+            <End Role="VariableType" EntitySet="VariableType" />
+            <End Role="StagedEfficiencyClassRange" EntitySet="StagedEfficiencyClassRange" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StagedEffi__MMID__1A9EF37A" Association="Self.FK__StagedEffi__MMID__1A9EF37A">
+            <End Role="Market2MarketTypeParameterGroup" EntitySet="Market2MarketTypeParameterGroup" />
+            <End Role="StagedEfficiencyClassRange" EntitySet="StagedEfficiencyClassRange" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StagedFor__Formu__39237A9A" Association="Self.FK__StagedFor__Formu__39237A9A">
+            <End Role="StagedFormula" EntitySet="StagedFormula" />
+            <End Role="StagedFormulaDependencyDetail" EntitySet="StagedFormulaDependencyDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StagedFor__Varia__3552E9B6" Association="Self.FK__StagedFor__Varia__3552E9B6">
+            <End Role="StagedVariable" EntitySet="StagedVariable" />
+            <End Role="StagedFormula" EntitySet="StagedFormula" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StagedFor__Varia__3A179ED3" Association="Self.FK__StagedFor__Varia__3A179ED3">
+            <End Role="StagedVariable" EntitySet="StagedVariable" />
+            <End Role="StagedFormulaDependencyDetail" EntitySet="StagedFormulaDependencyDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StagedForm__MMId__36470DEF" Association="Self.FK__StagedForm__MMId__36470DEF">
+            <End Role="Market2MarketTypeParameterGroup" EntitySet="Market2MarketTypeParameterGroup" />
+            <End Role="StagedFormula" EntitySet="StagedFormula" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StagedVar__Varia__251C81ED" Association="Self.FK__StagedVar__Varia__251C81ED">
+            <End Role="VariableType" EntitySet="VariableType" />
+            <End Role="StagedVariable" EntitySet="StagedVariable" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StagedVari__MMId__24285DB4" Association="Self.FK__StagedVari__MMId__24285DB4">
+            <End Role="Market2MarketTypeParameterGroup" EntitySet="Market2MarketTypeParameterGroup" />
+            <End Role="StagedVariable" EntitySet="StagedVariable" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StagedWeig__MMID__1F63A897" Association="Self.FK__StagedWeig__MMID__1F63A897">
+            <End Role="Market2MarketTypeParameterGroup" EntitySet="Market2MarketTypeParameterGroup" />
+            <End Role="StagedWeightSegmentCo2" EntitySet="StagedWeightSegmentCo2" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserMarke__Marke__5BAD9CC8" Association="Self.FK__UserMarke__Marke__5BAD9CC8">
+            <End Role="Market" EntitySet="Market" />
+            <End Role="UserMarket" EntitySet="UserMarket" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserMarke__UserI__5AB9788F" Association="Self.FK__UserMarke__UserI__5AB9788F">
+            <End Role="UserDetail" EntitySet="UserDetail" />
+            <End Role="UserMarket" EntitySet="UserMarket" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserRole__RoleId__57DD0BE4" Association="Self.FK__UserRole__RoleId__57DD0BE4">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserRole__UserId__56E8E7AB" Association="Self.FK__UserRole__UserId__56E8E7AB">
+            <End Role="UserDetail" EntitySet="UserDetail" />
+            <End Role="UserRole" EntitySet="UserRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommonCo2Range_MMId" Association="Self.FK_CommonCo2Range_MMId">
+            <End Role="Market2MarketTypeParameterGroup" EntitySet="Market2MarketTypeParameterGroup" />
+            <End Role="CommonCo2Range_old" EntitySet="CommonCo2Range_old" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommonCO2RANGE_ValueId" Association="Self.FK_CommonCO2RANGE_ValueId">
+            <End Role="RangeValue_old" EntitySet="RangeValue_old" />
+            <End Role="CommonCo2Range_old" EntitySet="CommonCo2Range_old" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Formula_MMId" Association="Self.FK_Formula_MMId">
+            <End Role="Market2MarketTypeParameterGroup" EntitySet="Market2MarketTypeParameterGroup" />
+            <End Role="Formula" EntitySet="Formula" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormulaDependencyDetails_FormulaID" Association="Self.FK_FormulaDependencyDetails_FormulaID">
+            <End Role="Formula" EntitySet="Formula" />
+            <End Role="FormulaDependencyDetail" EntitySet="FormulaDependencyDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormulaDependencyDetails_VariableId" Association="Self.FK_FormulaDependencyDetails_VariableId">
+            <End Role="Variable" EntitySet="Variable" />
+            <End Role="FormulaDependencyDetail" EntitySet="FormulaDependencyDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Formulas_VariableId" Association="Self.FK_Formulas_VariableId">
+            <End Role="Variable" EntitySet="Variable" />
+            <End Role="Formula" EntitySet="Formula" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FuelTypeConversionvalues_MarketId" Association="Self.FK_FuelTypeConversionvalues_MarketId">
+            <End Role="Market" EntitySet="Market" />
+            <End Role="FuelTypeConversionvalue" EntitySet="FuelTypeConversionvalue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FuelTypeConversionvalues_VariableId" Association="Self.FK_FuelTypeConversionvalues_VariableId">
+            <End Role="Variable" EntitySet="Variable" />
+            <End Role="FuelTypeConversionvalue" EntitySet="FuelTypeConversionvalue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Market2MarketTypeParameterGroup_MarketId" Association="Self.FK_Market2MarketTypeParameterGroup_MarketId">
+            <End Role="Market" EntitySet="Market" />
+            <End Role="Market2MarketTypeParameterGroup" EntitySet="Market2MarketTypeParameterGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Market2MarketTypeParameterGroup_MarketTypeId" Association="Self.FK_Market2MarketTypeParameterGroup_MarketTypeId">
+            <End Role="MarketType" EntitySet="MarketType" />
+            <End Role="Market2MarketTypeParameterGroup" EntitySet="Market2MarketTypeParameterGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Market2MarketTypeParameterGroup_ParameterGroupId" Association="Self.FK_Market2MarketTypeParameterGroup_ParameterGroupId">
+            <End Role="ParameterGroupMaster" EntitySet="ParameterGroupMaster" />
+            <End Role="Market2MarketTypeParameterGroup" EntitySet="Market2MarketTypeParameterGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Range_MMID" Association="Self.FK_Range_MMID">
+            <End Role="Market2MarketTypeParameterGroup" EntitySet="Market2MarketTypeParameterGroup" />
+            <End Role="EfficiencyClassRange" EntitySet="EfficiencyClassRange" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Range_VariableTypeId" Association="Self.FK_Range_VariableTypeId">
+            <End Role="VariableType" EntitySet="VariableType" />
+            <End Role="EfficiencyClassRange" EntitySet="EfficiencyClassRange" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RangeValues_MarketId" Association="Self.FK_RangeValues_MarketId">
+            <End Role="Market" EntitySet="Market" />
+            <End Role="RangeValue_old" EntitySet="RangeValue_old" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecMarketCO2Range_ValueId" Association="Self.FK_SpecMarketCO2Range_ValueId">
+            <End Role="RangeValue_old" EntitySet="RangeValue_old" />
+            <End Role="SpecMarketCO2Range_old" EntitySet="SpecMarketCO2Range_old" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecMarketCO2Rangee_MMId" Association="Self.FK_SpecMarketCO2Rangee_MMId">
+            <End Role="Market2MarketTypeParameterGroup" EntitySet="Market2MarketTypeParameterGroup" />
+            <End Role="SpecMarketCO2Range_old" EntitySet="SpecMarketCO2Range_old" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecMarketFuelTypeRange_MMID" Association="Self.FK_SpecMarketFuelTypeRange_MMID">
+            <End Role="Market2MarketTypeParameterGroup" EntitySet="Market2MarketTypeParameterGroup" />
+            <End Role="SpecMarketFuelTypeRange_old" EntitySet="SpecMarketFuelTypeRange_old" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecMarketFuelTypeRange_ValueId" Association="Self.FK_SpecMarketFuelTypeRange_ValueId">
+            <End Role="RangeValue_old" EntitySet="RangeValue_old" />
+            <End Role="SpecMarketFuelTypeRange_old" EntitySet="SpecMarketFuelTypeRange_old" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecMarketFuelTypeRangee_VariableTypeId" Association="Self.FK_SpecMarketFuelTypeRangee_VariableTypeId">
+            <End Role="VariableType" EntitySet="VariableType" />
+            <End Role="SpecMarketFuelTypeRange_old" EntitySet="SpecMarketFuelTypeRange_old" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Variable_Market2MarketTypeParameterGroup" Association="Self.FK_Variable_Market2MarketTypeParameterGroup">
+            <End Role="Market2MarketTypeParameterGroup" EntitySet="Market2MarketTypeParameterGroup" />
+            <End Role="Variable" EntitySet="Variable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Variable_VariableTypeId" Association="Self.FK_Variable_VariableTypeId">
+            <End Role="VariableType" EntitySet="VariableType" />
+            <End Role="Variable" EntitySet="Variable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VariableType_ParameterGroupId" Association="Self.FK_VariableType_ParameterGroupId">
+            <End Role="ParameterGroupMaster" EntitySet="ParameterGroupMaster" />
+            <End Role="VariableType" EntitySet="VariableType" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WeightSegmentCO2_MMID" Association="Self.FK_WeightSegmentCO2_MMID">
+            <End Role="Market2MarketTypeParameterGroup" EntitySet="Market2MarketTypeParameterGroup" />
+            <End Role="WeightSegmentCo2" EntitySet="WeightSegmentCo2" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="efficiencyclassdevModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CommonCo2Range_old">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MMId" Type="Int64" Nullable="false" />
+          <Property Name="StartRange" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EndRange" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ValueId" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Market2MarketTypeParameterGroup" Relationship="Self.FK_CommonCo2Range_MMId" FromRole="CommonCo2Range_old" ToRole="Market2MarketTypeParameterGroup" />
+          <NavigationProperty Name="RangeValue_old" Relationship="Self.FK_CommonCO2RANGE_ValueId" FromRole="CommonCo2Range_old" ToRole="RangeValue_old" />
+        </EntityType>
+        <EntityType Name="EfficiencyClassRange">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VariableTypeId" Type="Int32" />
+          <Property Name="MMID" Type="Int64" Nullable="false" />
+          <Property Name="StartRange" Type="Decimal" Precision="12" Scale="4" Nullable="false" />
+          <Property Name="EndRange" Type="Decimal" Precision="12" Scale="4" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ECValue" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Market2MarketTypeParameterGroup" Relationship="Self.FK_Range_MMID" FromRole="EfficiencyClassRange" ToRole="Market2MarketTypeParameterGroup" />
+          <NavigationProperty Name="VariableType" Relationship="Self.FK_Range_VariableTypeId" FromRole="EfficiencyClassRange" ToRole="VariableType" />
+        </EntityType>
+        <EntityType Name="Formula">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MMId" Type="Int64" Nullable="false" />
+          <Property Name="FormulaDefinition" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VariableId" Type="Int64" Nullable="false" />
+          <Property Name="FormulaPriority" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Market2MarketTypeParameterGroup" Relationship="Self.FK_Formula_MMId" FromRole="Formula" ToRole="Market2MarketTypeParameterGroup" />
+          <NavigationProperty Name="FormulaDependencyDetails" Relationship="Self.FK_FormulaDependencyDetails_FormulaID" FromRole="Formula" ToRole="FormulaDependencyDetail" />
+          <NavigationProperty Name="Variable" Relationship="Self.FK_Formulas_VariableId" FromRole="Formula" ToRole="Variable" />
+        </EntityType>
+        <EntityType Name="FormulaDependencyDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormulaId" Type="Int32" Nullable="false" />
+          <Property Name="VariableId" Type="Int64" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Formula" Relationship="Self.FK_FormulaDependencyDetails_FormulaID" FromRole="FormulaDependencyDetail" ToRole="Formula" />
+          <NavigationProperty Name="Variable" Relationship="Self.FK_FormulaDependencyDetails_VariableId" FromRole="FormulaDependencyDetail" ToRole="Variable" />
+        </EntityType>
+        <EntityType Name="FuelTypeConversionvalue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MarketId" Type="Int32" Nullable="false" />
+          <Property Name="VariableId" Type="Int64" />
+          <Property Name="FuelType" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ConversionValue" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Market" Relationship="Self.FK_FuelTypeConversionvalues_MarketId" FromRole="FuelTypeConversionvalue" ToRole="Market" />
+          <NavigationProperty Name="Variable" Relationship="Self.FK_FuelTypeConversionvalues_VariableId" FromRole="FuelTypeConversionvalue" ToRole="Variable" />
+        </EntityType>
+        <EntityType Name="Market">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SpecMarket" Type="Int32" Nullable="false" />
+          <Property Name="MarketName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="FuelTypeConversionvalues" Relationship="Self.FK_FuelTypeConversionvalues_MarketId" FromRole="Market" ToRole="FuelTypeConversionvalue" />
+          <NavigationProperty Name="UserMarkets" Relationship="Self.FK__UserMarke__Marke__5BAD9CC8" FromRole="Market" ToRole="UserMarket" />
+          <NavigationProperty Name="Market2MarketTypeParameterGroup" Relationship="Self.FK_Market2MarketTypeParameterGroup_MarketId" FromRole="Market" ToRole="Market2MarketTypeParameterGroup" />
+          <NavigationProperty Name="RangeValue_old" Relationship="Self.FK_RangeValues_MarketId" FromRole="Market" ToRole="RangeValue_old" />
+        </EntityType>
+        <EntityType Name="Market2MarketTypeParameterGroup">
+          <Key>
+            <PropertyRef Name="MMId" />
+          </Key>
+          <Property Name="MMId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MarketId" Type="Int32" Nullable="false" />
+          <Property Name="MarketTypeId" Type="Int32" Nullable="false" />
+          <Property Name="MYear" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ParameterGroupId" Type="Int32" />
+          <NavigationProperty Name="CommonCo2Range_old" Relationship="Self.FK_CommonCo2Range_MMId" FromRole="Market2MarketTypeParameterGroup" ToRole="CommonCo2Range_old" />
+          <NavigationProperty Name="EfficiencyClassRanges" Relationship="Self.FK_Range_MMID" FromRole="Market2MarketTypeParameterGroup" ToRole="EfficiencyClassRange" />
+          <NavigationProperty Name="Formulae" Relationship="Self.FK_Formula_MMId" FromRole="Market2MarketTypeParameterGroup" ToRole="Formula" />
+          <NavigationProperty Name="Market" Relationship="Self.FK_Market2MarketTypeParameterGroup_MarketId" FromRole="Market2MarketTypeParameterGroup" ToRole="Market" />
+          <NavigationProperty Name="StagedEfficiencyClassRanges" Relationship="Self.FK__StagedEffi__MMID__1A9EF37A" FromRole="Market2MarketTypeParameterGroup" ToRole="StagedEfficiencyClassRange" />
+          <NavigationProperty Name="StagedFormulas" Relationship="Self.FK__StagedForm__MMId__36470DEF" FromRole="Market2MarketTypeParameterGroup" ToRole="StagedFormula" />
+          <NavigationProperty Name="StagedVariables" Relationship="Self.FK__StagedVari__MMId__24285DB4" FromRole="Market2MarketTypeParameterGroup" ToRole="StagedVariable" />
+          <NavigationProperty Name="StagedWeightSegmentCo2" Relationship="Self.FK__StagedWeig__MMID__1F63A897" FromRole="Market2MarketTypeParameterGroup" ToRole="StagedWeightSegmentCo2" />
+          <NavigationProperty Name="MarketType" Relationship="Self.FK_Market2MarketTypeParameterGroup_MarketTypeId" FromRole="Market2MarketTypeParameterGroup" ToRole="MarketType" />
+          <NavigationProperty Name="ParameterGroupMaster" Relationship="Self.FK_Market2MarketTypeParameterGroup_ParameterGroupId" FromRole="Market2MarketTypeParameterGroup" ToRole="ParameterGroupMaster" />
+          <NavigationProperty Name="SpecMarketCO2Range_old" Relationship="Self.FK_SpecMarketCO2Rangee_MMId" FromRole="Market2MarketTypeParameterGroup" ToRole="SpecMarketCO2Range_old" />
+          <NavigationProperty Name="SpecMarketFuelTypeRange_old" Relationship="Self.FK_SpecMarketFuelTypeRange_MMID" FromRole="Market2MarketTypeParameterGroup" ToRole="SpecMarketFuelTypeRange_old" />
+          <NavigationProperty Name="Variables" Relationship="Self.FK_Variable_Market2MarketTypeParameterGroup" FromRole="Market2MarketTypeParameterGroup" ToRole="Variable" />
+          <NavigationProperty Name="WeightSegmentCo2" Relationship="Self.FK_WeightSegmentCO2_MMID" FromRole="Market2MarketTypeParameterGroup" ToRole="WeightSegmentCo2" />
+        </EntityType>
+        <EntityType Name="MarketType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MarketTypeName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Market2MarketTypeParameterGroup" Relationship="Self.FK_Market2MarketTypeParameterGroup_MarketTypeId" FromRole="MarketType" ToRole="Market2MarketTypeParameterGroup" />
+        </EntityType>
+        <EntityType Name="ParameterGroupMaster">
+          <Key>
+            <PropertyRef Name="ParameterGroupId" />
+          </Key>
+          <Property Name="ParameterGroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParameterGroupName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Market2MarketTypeParameterGroup" Relationship="Self.FK_Market2MarketTypeParameterGroup_ParameterGroupId" FromRole="ParameterGroupMaster" ToRole="Market2MarketTypeParameterGroup" />
+          <NavigationProperty Name="VariableTypes" Relationship="Self.FK_VariableType_ParameterGroupId" FromRole="ParameterGroupMaster" ToRole="VariableType" />
+        </EntityType>
+        <EntityType Name="RangeValue_old">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MarketId" Type="Int32" Nullable="false" />
+          <Property Name="ECValue" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="CommonCo2Range_old" Relationship="Self.FK_CommonCO2RANGE_ValueId" FromRole="RangeValue_old" ToRole="CommonCo2Range_old" />
+          <NavigationProperty Name="Market" Relationship="Self.FK_RangeValues_MarketId" FromRole="RangeValue_old" ToRole="Market" />
+          <NavigationProperty Name="SpecMarketCO2Range_old" Relationship="Self.FK_SpecMarketCO2Range_ValueId" FromRole="RangeValue_old" ToRole="SpecMarketCO2Range_old" />
+          <NavigationProperty Name="SpecMarketFuelTypeRange_old" Relationship="Self.FK_SpecMarketFuelTypeRange_ValueId" FromRole="RangeValue_old" ToRole="SpecMarketFuelTypeRange_old" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserRoles" Relationship="Self.FK__UserRole__RoleId__57DD0BE4" FromRole="Role" ToRole="UserRole" />
+        </EntityType>
+        <EntityType Name="SpecMarketCO2Range_old">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MMId" Type="Int64" Nullable="false" />
+          <Property Name="StartRange" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EndRange" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ValueId" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Market2MarketTypeParameterGroup" Relationship="Self.FK_SpecMarketCO2Rangee_MMId" FromRole="SpecMarketCO2Range_old" ToRole="Market2MarketTypeParameterGroup" />
+          <NavigationProperty Name="RangeValue_old" Relationship="Self.FK_SpecMarketCO2Range_ValueId" FromRole="SpecMarketCO2Range_old" ToRole="RangeValue_old" />
+        </EntityType>
+        <EntityType Name="SpecMarketFuelTypeRange_old">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VariableTypeId" Type="Int32" Nullable="false" />
+          <Property Name="MMID" Type="Int64" Nullable="false" />
+          <Property Name="StartRange" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="EndRange" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="ValueId" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Market2MarketTypeParameterGroup" Relationship="Self.FK_SpecMarketFuelTypeRange_MMID" FromRole="SpecMarketFuelTypeRange_old" ToRole="Market2MarketTypeParameterGroup" />
+          <NavigationProperty Name="RangeValue_old" Relationship="Self.FK_SpecMarketFuelTypeRange_ValueId" FromRole="SpecMarketFuelTypeRange_old" ToRole="RangeValue_old" />
+          <NavigationProperty Name="VariableType" Relationship="Self.FK_SpecMarketFuelTypeRangee_VariableTypeId" FromRole="SpecMarketFuelTypeRange_old" ToRole="VariableType" />
+        </EntityType>
+        <EntityType Name="StagedEfficiencyClassRange">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VariableTypeId" Type="Int32" />
+          <Property Name="MMID" Type="Int64" Nullable="false" />
+          <Property Name="StartRange" Type="Decimal" Precision="12" Scale="4" Nullable="false" />
+          <Property Name="EndRange" Type="Decimal" Precision="12" Scale="4" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ECValue" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Market2MarketTypeParameterGroup" Relationship="Self.FK__StagedEffi__MMID__1A9EF37A" FromRole="StagedEfficiencyClassRange" ToRole="Market2MarketTypeParameterGroup" />
+          <NavigationProperty Name="VariableType" Relationship="Self.FK__StagedEff__Varia__19AACF41" FromRole="StagedEfficiencyClassRange" ToRole="VariableType" />
+        </EntityType>
+        <EntityType Name="StagedFormula">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MMId" Type="Int64" Nullable="false" />
+          <Property Name="FormulaDefinition" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VariableId" Type="Int64" Nullable="false" />
+          <Property Name="FormulaPriority" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Market2MarketTypeParameterGroup" Relationship="Self.FK__StagedForm__MMId__36470DEF" FromRole="StagedFormula" ToRole="Market2MarketTypeParameterGroup" />
+          <NavigationProperty Name="StagedFormulaDependencyDetails" Relationship="Self.FK__StagedFor__Formu__39237A9A" FromRole="StagedFormula" ToRole="StagedFormulaDependencyDetail" />
+          <NavigationProperty Name="StagedVariable" Relationship="Self.FK__StagedFor__Varia__3552E9B6" FromRole="StagedFormula" ToRole="StagedVariable" />
+        </EntityType>
+        <EntityType Name="StagedFormulaDependencyDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormulaId" Type="Int32" Nullable="false" />
+          <Property Name="VariableId" Type="Int64" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="StagedFormula" Relationship="Self.FK__StagedFor__Formu__39237A9A" FromRole="StagedFormulaDependencyDetail" ToRole="StagedFormula" />
+          <NavigationProperty Name="StagedVariable" Relationship="Self.FK__StagedFor__Varia__3A179ED3" FromRole="StagedFormulaDependencyDetail" ToRole="StagedVariable" />
+        </EntityType>
+        <EntityType Name="StagedVariable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VariableName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VariableValue" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MMId" Type="Int64" Nullable="false" />
+          <Property Name="VariableTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Market2MarketTypeParameterGroup" Relationship="Self.FK__StagedVari__MMId__24285DB4" FromRole="StagedVariable" ToRole="Market2MarketTypeParameterGroup" />
+          <NavigationProperty Name="StagedFormulas" Relationship="Self.FK__StagedFor__Varia__3552E9B6" FromRole="StagedVariable" ToRole="StagedFormula" />
+          <NavigationProperty Name="StagedFormulaDependencyDetails" Relationship="Self.FK__StagedFor__Varia__3A179ED3" FromRole="StagedVariable" ToRole="StagedFormulaDependencyDetail" />
+          <NavigationProperty Name="VariableType" Relationship="Self.FK__StagedVar__Varia__251C81ED" FromRole="StagedVariable" ToRole="VariableType" />
+        </EntityType>
+        <EntityType Name="StagedWeightSegmentCo2">
+          <Key>
+            <PropertyRef Name="EwId" />
+          </Key>
+          <Property Name="EwId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MMID" Type="Int64" Nullable="false" />
+          <Property Name="PNO12" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PWeight" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SegmentCo2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Market2MarketTypeParameterGroup" Relationship="Self.FK__StagedWeig__MMID__1F63A897" FromRole="StagedWeightSegmentCo2" ToRole="Market2MarketTypeParameterGroup" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CDSID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="70" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="UserMarkets" Relationship="Self.FK__UserMarke__UserI__5AB9788F" FromRole="UserDetail" ToRole="UserMarket" />
+          <NavigationProperty Name="UserRoles" Relationship="Self.FK__UserRole__UserId__56E8E7AB" FromRole="UserDetail" ToRole="UserRole" />
+        </EntityType>
+        <EntityType Name="UserMarket">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="MarketId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="MarketId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Market" Relationship="Self.FK__UserMarke__Marke__5BAD9CC8" FromRole="UserMarket" ToRole="Market" />
+          <NavigationProperty Name="UserDetail" Relationship="Self.FK__UserMarke__UserI__5AB9788F" FromRole="UserMarket" ToRole="UserDetail" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Role" Relationship="Self.FK__UserRole__RoleId__57DD0BE4" FromRole="UserRole" ToRole="Role" />
+          <NavigationProperty Name="UserDetail" Relationship="Self.FK__UserRole__UserId__56E8E7AB" FromRole="UserRole" ToRole="UserDetail" />
+        </EntityType>
+        <EntityType Name="Variable">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VariableName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="VariableValue" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="MMId" Type="Int64" Nullable="false" />
+          <Property Name="VariableTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Formulae" Relationship="Self.FK_Formulas_VariableId" FromRole="Variable" ToRole="Formula" />
+          <NavigationProperty Name="FormulaDependencyDetails" Relationship="Self.FK_FormulaDependencyDetails_VariableId" FromRole="Variable" ToRole="FormulaDependencyDetail" />
+          <NavigationProperty Name="FuelTypeConversionvalues" Relationship="Self.FK_FuelTypeConversionvalues_VariableId" FromRole="Variable" ToRole="FuelTypeConversionvalue" />
+          <NavigationProperty Name="Market2MarketTypeParameterGroup" Relationship="Self.FK_Variable_Market2MarketTypeParameterGroup" FromRole="Variable" ToRole="Market2MarketTypeParameterGroup" />
+          <NavigationProperty Name="VariableType" Relationship="Self.FK_Variable_VariableTypeId" FromRole="Variable" ToRole="VariableType" />
+        </EntityType>
+        <EntityType Name="VariableType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParameterGroupId" Type="Int32" Nullable="false" />
+          <Property Name="VariableTypeName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="EfficiencyClassRanges" Relationship="Self.FK_Range_VariableTypeId" FromRole="VariableType" ToRole="EfficiencyClassRange" />
+          <NavigationProperty Name="ParameterGroupMaster" Relationship="Self.FK_VariableType_ParameterGroupId" FromRole="VariableType" ToRole="ParameterGroupMaster" />
+          <NavigationProperty Name="SpecMarketFuelTypeRange_old" Relationship="Self.FK_SpecMarketFuelTypeRangee_VariableTypeId" FromRole="VariableType" ToRole="SpecMarketFuelTypeRange_old" />
+          <NavigationProperty Name="StagedEfficiencyClassRanges" Relationship="Self.FK__StagedEff__Varia__19AACF41" FromRole="VariableType" ToRole="StagedEfficiencyClassRange" />
+          <NavigationProperty Name="StagedVariables" Relationship="Self.FK__StagedVar__Varia__251C81ED" FromRole="VariableType" ToRole="StagedVariable" />
+          <NavigationProperty Name="Variables" Relationship="Self.FK_Variable_VariableTypeId" FromRole="VariableType" ToRole="Variable" />
+        </EntityType>
+        <EntityType Name="WeightSegmentCo2">
+          <Key>
+            <PropertyRef Name="EwId" />
+          </Key>
+          <Property Name="EwId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MMID" Type="Int64" Nullable="false" />
+          <Property Name="PNO12" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PWeight" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="SegmentCo2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Market2MarketTypeParameterGroup" Relationship="Self.FK_WeightSegmentCO2_MMID" FromRole="WeightSegmentCo2" ToRole="Market2MarketTypeParameterGroup" />
+        </EntityType>
+        <EntityType Name="EfficiencyClassRangeold">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="MMID" />
+            <PropertyRef Name="StartRange" />
+            <PropertyRef Name="EndRange" />
+            <PropertyRef Name="CreatedBy" />
+            <PropertyRef Name="UpdatedBy" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="VariableTypeId" Type="Int32" />
+          <Property Name="MMID" Type="Int64" Nullable="false" />
+          <Property Name="StartRange" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="EndRange" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+          <Property Name="ValueId" Type="Int32" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Market2MarketTypeParameterGroup_old">
+          <Key>
+            <PropertyRef Name="MMId" />
+            <PropertyRef Name="MarketId" />
+            <PropertyRef Name="MarketTypeId" />
+            <PropertyRef Name="ParameterGroupId" />
+            <PropertyRef Name="MYear" />
+            <PropertyRef Name="CreatedBy" />
+            <PropertyRef Name="UpdatedBy" />
+          </Key>
+          <Property Name="MMId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MarketId" Type="Int32" Nullable="false" />
+          <Property Name="MarketTypeId" Type="Int32" Nullable="false" />
+          <Property Name="ParameterGroupId" Type="Int32" Nullable="false" />
+          <Property Name="MYear" Type="Int32" Nullable="false" />
+          <Property Name="CreatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_CommonCo2Range_MMId">
+          <End Role="Market2MarketTypeParameterGroup" Type="Self.Market2MarketTypeParameterGroup" Multiplicity="1" />
+          <End Role="CommonCo2Range_old" Type="Self.CommonCo2Range_old" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market2MarketTypeParameterGroup">
+              <PropertyRef Name="MMId" />
+            </Principal>
+            <Dependent Role="CommonCo2Range_old">
+              <PropertyRef Name="MMId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CommonCO2RANGE_ValueId">
+          <End Role="RangeValue_old" Type="Self.RangeValue_old" Multiplicity="0..1" />
+          <End Role="CommonCo2Range_old" Type="Self.CommonCo2Range_old" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RangeValue_old">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="CommonCo2Range_old">
+              <PropertyRef Name="ValueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Range_MMID">
+          <End Role="Market2MarketTypeParameterGroup" Type="Self.Market2MarketTypeParameterGroup" Multiplicity="1" />
+          <End Role="EfficiencyClassRange" Type="Self.EfficiencyClassRange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market2MarketTypeParameterGroup">
+              <PropertyRef Name="MMId" />
+            </Principal>
+            <Dependent Role="EfficiencyClassRange">
+              <PropertyRef Name="MMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Range_VariableTypeId">
+          <End Role="VariableType" Type="Self.VariableType" Multiplicity="0..1" />
+          <End Role="EfficiencyClassRange" Type="Self.EfficiencyClassRange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VariableType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EfficiencyClassRange">
+              <PropertyRef Name="VariableTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Formula_MMId">
+          <End Role="Market2MarketTypeParameterGroup" Type="Self.Market2MarketTypeParameterGroup" Multiplicity="1" />
+          <End Role="Formula" Type="Self.Formula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market2MarketTypeParameterGroup">
+              <PropertyRef Name="MMId" />
+            </Principal>
+            <Dependent Role="Formula">
+              <PropertyRef Name="MMId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormulaDependencyDetails_FormulaID">
+          <End Role="Formula" Type="Self.Formula" Multiplicity="1" />
+          <End Role="FormulaDependencyDetail" Type="Self.FormulaDependencyDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Formula">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="FormulaDependencyDetail">
+              <PropertyRef Name="FormulaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Formulas_VariableId">
+          <End Role="Variable" Type="Self.Variable" Multiplicity="1" />
+          <End Role="Formula" Type="Self.Formula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Variable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Formula">
+              <PropertyRef Name="VariableId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FormulaDependencyDetails_VariableId">
+          <End Role="Variable" Type="Self.Variable" Multiplicity="1" />
+          <End Role="FormulaDependencyDetail" Type="Self.FormulaDependencyDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Variable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormulaDependencyDetail">
+              <PropertyRef Name="VariableId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FuelTypeConversionvalues_MarketId">
+          <End Role="Market" Type="Self.Market" Multiplicity="1" />
+          <End Role="FuelTypeConversionvalue" Type="Self.FuelTypeConversionvalue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FuelTypeConversionvalue">
+              <PropertyRef Name="MarketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FuelTypeConversionvalues_VariableId">
+          <End Role="Variable" Type="Self.Variable" Multiplicity="0..1" />
+          <End Role="FuelTypeConversionvalue" Type="Self.FuelTypeConversionvalue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Variable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FuelTypeConversionvalue">
+              <PropertyRef Name="VariableId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserMarke__Marke__5BAD9CC8">
+          <End Role="Market" Type="Self.Market" Multiplicity="1" />
+          <End Role="UserMarket" Type="Self.UserMarket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMarket">
+              <PropertyRef Name="MarketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Market2MarketTypeParameterGroup_MarketId">
+          <End Role="Market" Type="Self.Market" Multiplicity="1" />
+          <End Role="Market2MarketTypeParameterGroup" Type="Self.Market2MarketTypeParameterGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Market2MarketTypeParameterGroup">
+              <PropertyRef Name="MarketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RangeValues_MarketId">
+          <End Role="Market" Type="Self.Market" Multiplicity="1" />
+          <End Role="RangeValue_old" Type="Self.RangeValue_old" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="RangeValue_old">
+              <PropertyRef Name="MarketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StagedEffi__MMID__1A9EF37A">
+          <End Role="Market2MarketTypeParameterGroup" Type="Self.Market2MarketTypeParameterGroup" Multiplicity="1" />
+          <End Role="StagedEfficiencyClassRange" Type="Self.StagedEfficiencyClassRange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market2MarketTypeParameterGroup">
+              <PropertyRef Name="MMId" />
+            </Principal>
+            <Dependent Role="StagedEfficiencyClassRange">
+              <PropertyRef Name="MMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StagedForm__MMId__36470DEF">
+          <End Role="Market2MarketTypeParameterGroup" Type="Self.Market2MarketTypeParameterGroup" Multiplicity="1" />
+          <End Role="StagedFormula" Type="Self.StagedFormula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market2MarketTypeParameterGroup">
+              <PropertyRef Name="MMId" />
+            </Principal>
+            <Dependent Role="StagedFormula">
+              <PropertyRef Name="MMId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StagedVari__MMId__24285DB4">
+          <End Role="Market2MarketTypeParameterGroup" Type="Self.Market2MarketTypeParameterGroup" Multiplicity="1" />
+          <End Role="StagedVariable" Type="Self.StagedVariable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market2MarketTypeParameterGroup">
+              <PropertyRef Name="MMId" />
+            </Principal>
+            <Dependent Role="StagedVariable">
+              <PropertyRef Name="MMId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StagedWeig__MMID__1F63A897">
+          <End Role="Market2MarketTypeParameterGroup" Type="Self.Market2MarketTypeParameterGroup" Multiplicity="1" />
+          <End Role="StagedWeightSegmentCo2" Type="Self.StagedWeightSegmentCo2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market2MarketTypeParameterGroup">
+              <PropertyRef Name="MMId" />
+            </Principal>
+            <Dependent Role="StagedWeightSegmentCo2">
+              <PropertyRef Name="MMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Market2MarketTypeParameterGroup_MarketTypeId">
+          <End Role="MarketType" Type="Self.MarketType" Multiplicity="1" />
+          <End Role="Market2MarketTypeParameterGroup" Type="Self.Market2MarketTypeParameterGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MarketType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Market2MarketTypeParameterGroup">
+              <PropertyRef Name="MarketTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Market2MarketTypeParameterGroup_ParameterGroupId">
+          <End Role="ParameterGroupMaster" Type="Self.ParameterGroupMaster" Multiplicity="0..1" />
+          <End Role="Market2MarketTypeParameterGroup" Type="Self.Market2MarketTypeParameterGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParameterGroupMaster">
+              <PropertyRef Name="ParameterGroupId" />
+            </Principal>
+            <Dependent Role="Market2MarketTypeParameterGroup">
+              <PropertyRef Name="ParameterGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecMarketCO2Rangee_MMId">
+          <End Role="Market2MarketTypeParameterGroup" Type="Self.Market2MarketTypeParameterGroup" Multiplicity="1" />
+          <End Role="SpecMarketCO2Range_old" Type="Self.SpecMarketCO2Range_old" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market2MarketTypeParameterGroup">
+              <PropertyRef Name="MMId" />
+            </Principal>
+            <Dependent Role="SpecMarketCO2Range_old">
+              <PropertyRef Name="MMId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecMarketFuelTypeRange_MMID">
+          <End Role="Market2MarketTypeParameterGroup" Type="Self.Market2MarketTypeParameterGroup" Multiplicity="1" />
+          <End Role="SpecMarketFuelTypeRange_old" Type="Self.SpecMarketFuelTypeRange_old" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market2MarketTypeParameterGroup">
+              <PropertyRef Name="MMId" />
+            </Principal>
+            <Dependent Role="SpecMarketFuelTypeRange_old">
+              <PropertyRef Name="MMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Variable_Market2MarketTypeParameterGroup">
+          <End Role="Market2MarketTypeParameterGroup" Type="Self.Market2MarketTypeParameterGroup" Multiplicity="1" />
+          <End Role="Variable" Type="Self.Variable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market2MarketTypeParameterGroup">
+              <PropertyRef Name="MMId" />
+            </Principal>
+            <Dependent Role="Variable">
+              <PropertyRef Name="MMId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WeightSegmentCO2_MMID">
+          <End Role="Market2MarketTypeParameterGroup" Type="Self.Market2MarketTypeParameterGroup" Multiplicity="1" />
+          <End Role="WeightSegmentCo2" Type="Self.WeightSegmentCo2" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Market2MarketTypeParameterGroup">
+              <PropertyRef Name="MMId" />
+            </Principal>
+            <Dependent Role="WeightSegmentCo2">
+              <PropertyRef Name="MMID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VariableType_ParameterGroupId">
+          <End Role="ParameterGroupMaster" Type="Self.ParameterGroupMaster" Multiplicity="1" />
+          <End Role="VariableType" Type="Self.VariableType" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParameterGroupMaster">
+              <PropertyRef Name="ParameterGroupId" />
+            </Principal>
+            <Dependent Role="VariableType">
+              <PropertyRef Name="ParameterGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecMarketCO2Range_ValueId">
+          <End Role="RangeValue_old" Type="Self.RangeValue_old" Multiplicity="0..1" />
+          <End Role="SpecMarketCO2Range_old" Type="Self.SpecMarketCO2Range_old" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RangeValue_old">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpecMarketCO2Range_old">
+              <PropertyRef Name="ValueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecMarketFuelTypeRange_ValueId">
+          <End Role="RangeValue_old" Type="Self.RangeValue_old" Multiplicity="0..1" />
+          <End Role="SpecMarketFuelTypeRange_old" Type="Self.SpecMarketFuelTypeRange_old" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RangeValue_old">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpecMarketFuelTypeRange_old">
+              <PropertyRef Name="ValueId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserRole__RoleId__57DD0BE4">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SpecMarketFuelTypeRangee_VariableTypeId">
+          <End Role="VariableType" Type="Self.VariableType" Multiplicity="1" />
+          <End Role="SpecMarketFuelTypeRange_old" Type="Self.SpecMarketFuelTypeRange_old" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VariableType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SpecMarketFuelTypeRange_old">
+              <PropertyRef Name="VariableTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StagedEff__Varia__19AACF41">
+          <End Role="VariableType" Type="Self.VariableType" Multiplicity="0..1" />
+          <End Role="StagedEfficiencyClassRange" Type="Self.StagedEfficiencyClassRange" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VariableType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StagedEfficiencyClassRange">
+              <PropertyRef Name="VariableTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StagedFor__Formu__39237A9A">
+          <End Role="StagedFormula" Type="Self.StagedFormula" Multiplicity="1" />
+          <End Role="StagedFormulaDependencyDetail" Type="Self.StagedFormulaDependencyDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StagedFormula">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="StagedFormulaDependencyDetail">
+              <PropertyRef Name="FormulaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StagedFor__Varia__3552E9B6">
+          <End Role="StagedVariable" Type="Self.StagedVariable" Multiplicity="1" />
+          <End Role="StagedFormula" Type="Self.StagedFormula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StagedVariable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StagedFormula">
+              <PropertyRef Name="VariableId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StagedFor__Varia__3A179ED3">
+          <End Role="StagedVariable" Type="Self.StagedVariable" Multiplicity="1" />
+          <End Role="StagedFormulaDependencyDetail" Type="Self.StagedFormulaDependencyDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StagedVariable">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StagedFormulaDependencyDetail">
+              <PropertyRef Name="VariableId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__StagedVar__Varia__251C81ED">
+          <End Role="VariableType" Type="Self.VariableType" Multiplicity="1" />
+          <End Role="StagedVariable" Type="Self.StagedVariable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VariableType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="StagedVariable">
+              <PropertyRef Name="VariableTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserMarke__UserI__5AB9788F">
+          <End Role="UserDetail" Type="Self.UserDetail" Multiplicity="1" />
+          <End Role="UserMarket" Type="Self.UserMarket" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserMarket">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserRole__UserId__56E8E7AB">
+          <End Role="UserDetail" Type="Self.UserDetail" Multiplicity="1" />
+          <End Role="UserRole" Type="Self.UserRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserDetail">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserRole">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Variable_VariableTypeId">
+          <End Role="VariableType" Type="Self.VariableType" Multiplicity="1" />
+          <End Role="Variable" Type="Self.Variable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VariableType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Variable">
+              <PropertyRef Name="VariableTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="efficiencyclassdevEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CommonCo2Range_old" EntityType="Self.CommonCo2Range_old" />
+          <EntitySet Name="EfficiencyClassRanges" EntityType="Self.EfficiencyClassRange" />
+          <EntitySet Name="Formulae" EntityType="Self.Formula" />
+          <EntitySet Name="FormulaDependencyDetails" EntityType="Self.FormulaDependencyDetail" />
+          <EntitySet Name="FuelTypeConversionvalues" EntityType="Self.FuelTypeConversionvalue" />
+          <EntitySet Name="Markets" EntityType="Self.Market" />
+          <EntitySet Name="Market2MarketTypeParameterGroup" EntityType="Self.Market2MarketTypeParameterGroup" />
+          <EntitySet Name="MarketTypes" EntityType="Self.MarketType" />
+          <EntitySet Name="ParameterGroupMasters" EntityType="Self.ParameterGroupMaster" />
+          <EntitySet Name="RangeValue_old" EntityType="Self.RangeValue_old" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="SpecMarketCO2Range_old" EntityType="Self.SpecMarketCO2Range_old" />
+          <EntitySet Name="SpecMarketFuelTypeRange_old" EntityType="Self.SpecMarketFuelTypeRange_old" />
+          <EntitySet Name="StagedEfficiencyClassRanges" EntityType="Self.StagedEfficiencyClassRange" />
+          <EntitySet Name="StagedFormulas" EntityType="Self.StagedFormula" />
+          <EntitySet Name="StagedFormulaDependencyDetails" EntityType="Self.StagedFormulaDependencyDetail" />
+          <EntitySet Name="StagedVariables" EntityType="Self.StagedVariable" />
+          <EntitySet Name="StagedWeightSegmentCo2" EntityType="Self.StagedWeightSegmentCo2" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="UserDetails" EntityType="Self.UserDetail" />
+          <EntitySet Name="UserMarkets" EntityType="Self.UserMarket" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+          <EntitySet Name="Variables" EntityType="Self.Variable" />
+          <EntitySet Name="VariableTypes" EntityType="Self.VariableType" />
+          <EntitySet Name="WeightSegmentCo2" EntityType="Self.WeightSegmentCo2" />
+          <EntitySet Name="EfficiencyClassRangeolds" EntityType="Self.EfficiencyClassRangeold" />
+          <EntitySet Name="Market2MarketTypeParameterGroup_old" EntityType="Self.Market2MarketTypeParameterGroup_old" />
+          <AssociationSet Name="FK_CommonCo2Range_MMId" Association="Self.FK_CommonCo2Range_MMId">
+            <End Role="Market2MarketTypeParameterGroup" EntitySet="Market2MarketTypeParameterGroup" />
+            <End Role="CommonCo2Range_old" EntitySet="CommonCo2Range_old" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CommonCO2RANGE_ValueId" Association="Self.FK_CommonCO2RANGE_ValueId">
+            <End Role="RangeValue_old" EntitySet="RangeValue_old" />
+            <End Role="CommonCo2Range_old" EntitySet="CommonCo2Range_old" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Range_MMID" Association="Self.FK_Range_MMID">
+            <End Role="Market2MarketTypeParameterGroup" EntitySet="Market2MarketTypeParameterGroup" />
+            <End Role="EfficiencyClassRange" EntitySet="EfficiencyClassRanges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Range_VariableTypeId" Association="Self.FK_Range_VariableTypeId">
+            <End Role="VariableType" EntitySet="VariableTypes" />
+            <End Role="EfficiencyClassRange" EntitySet="EfficiencyClassRanges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Formula_MMId" Association="Self.FK_Formula_MMId">
+            <End Role="Market2MarketTypeParameterGroup" EntitySet="Market2MarketTypeParameterGroup" />
+            <End Role="Formula" EntitySet="Formulae" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormulaDependencyDetails_FormulaID" Association="Self.FK_FormulaDependencyDetails_FormulaID">
+            <End Role="Formula" EntitySet="Formulae" />
+            <End Role="FormulaDependencyDetail" EntitySet="FormulaDependencyDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Formulas_VariableId" Association="Self.FK_Formulas_VariableId">
+            <End Role="Variable" EntitySet="Variables" />
+            <End Role="Formula" EntitySet="Formulae" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FormulaDependencyDetails_VariableId" Association="Self.FK_FormulaDependencyDetails_VariableId">
+            <End Role="Variable" EntitySet="Variables" />
+            <End Role="FormulaDependencyDetail" EntitySet="FormulaDependencyDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FuelTypeConversionvalues_MarketId" Association="Self.FK_FuelTypeConversionvalues_MarketId">
+            <End Role="Market" EntitySet="Markets" />
+            <End Role="FuelTypeConversionvalue" EntitySet="FuelTypeConversionvalues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FuelTypeConversionvalues_VariableId" Association="Self.FK_FuelTypeConversionvalues_VariableId">
+            <End Role="Variable" EntitySet="Variables" />
+            <End Role="FuelTypeConversionvalue" EntitySet="FuelTypeConversionvalues" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserMarke__Marke__5BAD9CC8" Association="Self.FK__UserMarke__Marke__5BAD9CC8">
+            <End Role="Market" EntitySet="Markets" />
+            <End Role="UserMarket" EntitySet="UserMarkets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Market2MarketTypeParameterGroup_MarketId" Association="Self.FK_Market2MarketTypeParameterGroup_MarketId">
+            <End Role="Market" EntitySet="Markets" />
+            <End Role="Market2MarketTypeParameterGroup" EntitySet="Market2MarketTypeParameterGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RangeValues_MarketId" Association="Self.FK_RangeValues_MarketId">
+            <End Role="Market" EntitySet="Markets" />
+            <End Role="RangeValue_old" EntitySet="RangeValue_old" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StagedEffi__MMID__1A9EF37A" Association="Self.FK__StagedEffi__MMID__1A9EF37A">
+            <End Role="Market2MarketTypeParameterGroup" EntitySet="Market2MarketTypeParameterGroup" />
+            <End Role="StagedEfficiencyClassRange" EntitySet="StagedEfficiencyClassRanges" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StagedForm__MMId__36470DEF" Association="Self.FK__StagedForm__MMId__36470DEF">
+            <End Role="Market2MarketTypeParameterGroup" EntitySet="Market2MarketTypeParameterGroup" />
+            <End Role="StagedFormula" EntitySet="StagedFormulas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StagedVari__MMId__24285DB4" Association="Self.FK__StagedVari__MMId__24285DB4">
+            <End Role="Market2MarketTypeParameterGroup" EntitySet="Market2MarketTypeParameterGroup" />
+            <End Role="StagedVariable" EntitySet="StagedVariables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StagedWeig__MMID__1F63A897" Association="Self.FK__StagedWeig__MMID__1F63A897">
+            <End Role="Market2MarketTypeParameterGroup" EntitySet="Market2MarketTypeParameterGroup" />
+            <End Role="StagedWeightSegmentCo2" EntitySet="StagedWeightSegmentCo2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Market2MarketTypeParameterGroup_MarketTypeId" Association="Self.FK_Market2MarketTypeParameterGroup_MarketTypeId">
+            <End Role="MarketType" EntitySet="MarketTypes" />
+            <End Role="Market2MarketTypeParameterGroup" EntitySet="Market2MarketTypeParameterGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Market2MarketTypeParameterGroup_ParameterGroupId" Association="Self.FK_Market2MarketTypeParameterGroup_ParameterGroupId">
+            <End Role="ParameterGroupMaster" EntitySet="ParameterGroupMasters" />
+            <End Role="Market2MarketTypeParameterGroup" EntitySet="Market2MarketTypeParameterGroup" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecMarketCO2Rangee_MMId" Association="Self.FK_SpecMarketCO2Rangee_MMId">
+            <End Role="Market2MarketTypeParameterGroup" EntitySet="Market2MarketTypeParameterGroup" />
+            <End Role="SpecMarketCO2Range_old" EntitySet="SpecMarketCO2Range_old" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecMarketFuelTypeRange_MMID" Association="Self.FK_SpecMarketFuelTypeRange_MMID">
+            <End Role="Market2MarketTypeParameterGroup" EntitySet="Market2MarketTypeParameterGroup" />
+            <End Role="SpecMarketFuelTypeRange_old" EntitySet="SpecMarketFuelTypeRange_old" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Variable_Market2MarketTypeParameterGroup" Association="Self.FK_Variable_Market2MarketTypeParameterGroup">
+            <End Role="Market2MarketTypeParameterGroup" EntitySet="Market2MarketTypeParameterGroup" />
+            <End Role="Variable" EntitySet="Variables" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WeightSegmentCO2_MMID" Association="Self.FK_WeightSegmentCO2_MMID">
+            <End Role="Market2MarketTypeParameterGroup" EntitySet="Market2MarketTypeParameterGroup" />
+            <End Role="WeightSegmentCo2" EntitySet="WeightSegmentCo2" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VariableType_ParameterGroupId" Association="Self.FK_VariableType_ParameterGroupId">
+            <End Role="ParameterGroupMaster" EntitySet="ParameterGroupMasters" />
+            <End Role="VariableType" EntitySet="VariableTypes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecMarketCO2Range_ValueId" Association="Self.FK_SpecMarketCO2Range_ValueId">
+            <End Role="RangeValue_old" EntitySet="RangeValue_old" />
+            <End Role="SpecMarketCO2Range_old" EntitySet="SpecMarketCO2Range_old" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecMarketFuelTypeRange_ValueId" Association="Self.FK_SpecMarketFuelTypeRange_ValueId">
+            <End Role="RangeValue_old" EntitySet="RangeValue_old" />
+            <End Role="SpecMarketFuelTypeRange_old" EntitySet="SpecMarketFuelTypeRange_old" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserRole__RoleId__57DD0BE4" Association="Self.FK__UserRole__RoleId__57DD0BE4">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="UserRole" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SpecMarketFuelTypeRangee_VariableTypeId" Association="Self.FK_SpecMarketFuelTypeRangee_VariableTypeId">
+            <End Role="VariableType" EntitySet="VariableTypes" />
+            <End Role="SpecMarketFuelTypeRange_old" EntitySet="SpecMarketFuelTypeRange_old" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StagedEff__Varia__19AACF41" Association="Self.FK__StagedEff__Varia__19AACF41">
+            <End Role="VariableType" EntitySet="VariableTypes" />
+            <End Role="StagedEfficiencyClassRange" EntitySet="StagedEfficiencyClassRanges" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StagedFor__Formu__39237A9A" Association="Self.FK__StagedFor__Formu__39237A9A">
+            <End Role="StagedFormula" EntitySet="StagedFormulas" />
+            <End Role="StagedFormulaDependencyDetail" EntitySet="StagedFormulaDependencyDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StagedFor__Varia__3552E9B6" Association="Self.FK__StagedFor__Varia__3552E9B6">
+            <End Role="StagedVariable" EntitySet="StagedVariables" />
+            <End Role="StagedFormula" EntitySet="StagedFormulas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StagedFor__Varia__3A179ED3" Association="Self.FK__StagedFor__Varia__3A179ED3">
+            <End Role="StagedVariable" EntitySet="StagedVariables" />
+            <End Role="StagedFormulaDependencyDetail" EntitySet="StagedFormulaDependencyDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__StagedVar__Varia__251C81ED" Association="Self.FK__StagedVar__Varia__251C81ED">
+            <End Role="VariableType" EntitySet="VariableTypes" />
+            <End Role="StagedVariable" EntitySet="StagedVariables" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserMarke__UserI__5AB9788F" Association="Self.FK__UserMarke__UserI__5AB9788F">
+            <End Role="UserDetail" EntitySet="UserDetails" />
+            <End Role="UserMarket" EntitySet="UserMarkets" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserRole__UserId__56E8E7AB" Association="Self.FK__UserRole__UserId__56E8E7AB">
+            <End Role="UserDetail" EntitySet="UserDetails" />
+            <End Role="UserRole" EntitySet="UserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Variable_VariableTypeId" Association="Self.FK_Variable_VariableTypeId">
+            <End Role="VariableType" EntitySet="VariableTypes" />
+            <End Role="Variable" EntitySet="Variables" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="efficiencyclassdevModelStoreContainer" CdmEntityContainer="efficiencyclassdevEntities">
+          <EntitySetMapping Name="CommonCo2Range_old">
+            <EntityTypeMapping TypeName="efficiencyclassdevModel.CommonCo2Range_old">
+              <MappingFragment StoreEntitySet="CommonCo2Range_old">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MMId" ColumnName="MMId" />
+                <ScalarProperty Name="StartRange" ColumnName="StartRange" />
+                <ScalarProperty Name="EndRange" ColumnName="EndRange" />
+                <ScalarProperty Name="ValueId" ColumnName="ValueId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EfficiencyClassRanges">
+            <EntityTypeMapping TypeName="efficiencyclassdevModel.EfficiencyClassRange">
+              <MappingFragment StoreEntitySet="EfficiencyClassRange">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VariableTypeId" ColumnName="VariableTypeId" />
+                <ScalarProperty Name="MMID" ColumnName="MMID" />
+                <ScalarProperty Name="StartRange" ColumnName="StartRange" />
+                <ScalarProperty Name="EndRange" ColumnName="EndRange" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="ECValue" ColumnName="ECValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Formulae">
+            <EntityTypeMapping TypeName="efficiencyclassdevModel.Formula">
+              <MappingFragment StoreEntitySet="Formula">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MMId" ColumnName="MMId" />
+                <ScalarProperty Name="FormulaDefinition" ColumnName="FormulaDefinition" />
+                <ScalarProperty Name="VariableId" ColumnName="VariableId" />
+                <ScalarProperty Name="FormulaPriority" ColumnName="FormulaPriority" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormulaDependencyDetails">
+            <EntityTypeMapping TypeName="efficiencyclassdevModel.FormulaDependencyDetail">
+              <MappingFragment StoreEntitySet="FormulaDependencyDetail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FormulaId" ColumnName="FormulaId" />
+                <ScalarProperty Name="VariableId" ColumnName="VariableId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FuelTypeConversionvalues">
+            <EntityTypeMapping TypeName="efficiencyclassdevModel.FuelTypeConversionvalue">
+              <MappingFragment StoreEntitySet="FuelTypeConversionvalue">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MarketId" ColumnName="MarketId" />
+                <ScalarProperty Name="VariableId" ColumnName="VariableId" />
+                <ScalarProperty Name="FuelType" ColumnName="FuelType" />
+                <ScalarProperty Name="ConversionValue" ColumnName="ConversionValue" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Markets">
+            <EntityTypeMapping TypeName="efficiencyclassdevModel.Market">
+              <MappingFragment StoreEntitySet="Market">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SpecMarket" ColumnName="SpecMarket" />
+                <ScalarProperty Name="MarketName" ColumnName="MarketName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Market2MarketTypeParameterGroup">
+            <EntityTypeMapping TypeName="efficiencyclassdevModel.Market2MarketTypeParameterGroup">
+              <MappingFragment StoreEntitySet="Market2MarketTypeParameterGroup">
+                <ScalarProperty Name="MMId" ColumnName="MMId" />
+                <ScalarProperty Name="MarketId" ColumnName="MarketId" />
+                <ScalarProperty Name="MarketTypeId" ColumnName="MarketTypeId" />
+                <ScalarProperty Name="MYear" ColumnName="MYear" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="ParameterGroupId" ColumnName="ParameterGroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MarketTypes">
+            <EntityTypeMapping TypeName="efficiencyclassdevModel.MarketType">
+              <MappingFragment StoreEntitySet="MarketType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MarketTypeName" ColumnName="MarketTypeName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParameterGroupMasters">
+            <EntityTypeMapping TypeName="efficiencyclassdevModel.ParameterGroupMaster">
+              <MappingFragment StoreEntitySet="ParameterGroupMaster">
+                <ScalarProperty Name="ParameterGroupId" ColumnName="ParameterGroupId" />
+                <ScalarProperty Name="ParameterGroupName" ColumnName="ParameterGroupName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RangeValue_old">
+            <EntityTypeMapping TypeName="efficiencyclassdevModel.RangeValue_old">
+              <MappingFragment StoreEntitySet="RangeValue_old">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MarketId" ColumnName="MarketId" />
+                <ScalarProperty Name="ECValue" ColumnName="ECValue" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="efficiencyclassdevModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SpecMarketCO2Range_old">
+            <EntityTypeMapping TypeName="efficiencyclassdevModel.SpecMarketCO2Range_old">
+              <MappingFragment StoreEntitySet="SpecMarketCO2Range_old">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MMId" ColumnName="MMId" />
+                <ScalarProperty Name="StartRange" ColumnName="StartRange" />
+                <ScalarProperty Name="EndRange" ColumnName="EndRange" />
+                <ScalarProperty Name="ValueId" ColumnName="ValueId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SpecMarketFuelTypeRange_old">
+            <EntityTypeMapping TypeName="efficiencyclassdevModel.SpecMarketFuelTypeRange_old">
+              <MappingFragment StoreEntitySet="SpecMarketFuelTypeRange_old">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VariableTypeId" ColumnName="VariableTypeId" />
+                <ScalarProperty Name="MMID" ColumnName="MMID" />
+                <ScalarProperty Name="StartRange" ColumnName="StartRange" />
+                <ScalarProperty Name="EndRange" ColumnName="EndRange" />
+                <ScalarProperty Name="ValueId" ColumnName="ValueId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StagedEfficiencyClassRanges">
+            <EntityTypeMapping TypeName="efficiencyclassdevModel.StagedEfficiencyClassRange">
+              <MappingFragment StoreEntitySet="StagedEfficiencyClassRange">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VariableTypeId" ColumnName="VariableTypeId" />
+                <ScalarProperty Name="MMID" ColumnName="MMID" />
+                <ScalarProperty Name="StartRange" ColumnName="StartRange" />
+                <ScalarProperty Name="EndRange" ColumnName="EndRange" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="ECValue" ColumnName="ECValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StagedFormulas">
+            <EntityTypeMapping TypeName="efficiencyclassdevModel.StagedFormula">
+              <MappingFragment StoreEntitySet="StagedFormula">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MMId" ColumnName="MMId" />
+                <ScalarProperty Name="FormulaDefinition" ColumnName="FormulaDefinition" />
+                <ScalarProperty Name="VariableId" ColumnName="VariableId" />
+                <ScalarProperty Name="FormulaPriority" ColumnName="FormulaPriority" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StagedFormulaDependencyDetails">
+            <EntityTypeMapping TypeName="efficiencyclassdevModel.StagedFormulaDependencyDetail">
+              <MappingFragment StoreEntitySet="StagedFormulaDependencyDetail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FormulaId" ColumnName="FormulaId" />
+                <ScalarProperty Name="VariableId" ColumnName="VariableId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StagedVariables">
+            <EntityTypeMapping TypeName="efficiencyclassdevModel.StagedVariable">
+              <MappingFragment StoreEntitySet="StagedVariable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VariableName" ColumnName="VariableName" />
+                <ScalarProperty Name="VariableValue" ColumnName="VariableValue" />
+                <ScalarProperty Name="MMId" ColumnName="MMId" />
+                <ScalarProperty Name="VariableTypeId" ColumnName="VariableTypeId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StagedWeightSegmentCo2">
+            <EntityTypeMapping TypeName="efficiencyclassdevModel.StagedWeightSegmentCo2">
+              <MappingFragment StoreEntitySet="StagedWeightSegmentCo2">
+                <ScalarProperty Name="EwId" ColumnName="EwId" />
+                <ScalarProperty Name="MMID" ColumnName="MMID" />
+                <ScalarProperty Name="PNO12" ColumnName="PNO12" />
+                <ScalarProperty Name="PWeight" ColumnName="PWeight" />
+                <ScalarProperty Name="SegmentCo2" ColumnName="SegmentCo2" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="efficiencyclassdevModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserDetails">
+            <EntityTypeMapping TypeName="efficiencyclassdevModel.UserDetail">
+              <MappingFragment StoreEntitySet="UserDetail">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CDSID" ColumnName="CDSID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMarkets">
+            <EntityTypeMapping TypeName="efficiencyclassdevModel.UserMarket">
+              <MappingFragment StoreEntitySet="UserMarket">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="MarketId" ColumnName="MarketId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="efficiencyclassdevModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRole">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Variables">
+            <EntityTypeMapping TypeName="efficiencyclassdevModel.Variable">
+              <MappingFragment StoreEntitySet="Variable">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VariableName" ColumnName="VariableName" />
+                <ScalarProperty Name="VariableValue" ColumnName="VariableValue" />
+                <ScalarProperty Name="MMId" ColumnName="MMId" />
+                <ScalarProperty Name="VariableTypeId" ColumnName="VariableTypeId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VariableTypes">
+            <EntityTypeMapping TypeName="efficiencyclassdevModel.VariableType">
+              <MappingFragment StoreEntitySet="VariableType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ParameterGroupId" ColumnName="ParameterGroupId" />
+                <ScalarProperty Name="VariableTypeName" ColumnName="VariableTypeName" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WeightSegmentCo2">
+            <EntityTypeMapping TypeName="efficiencyclassdevModel.WeightSegmentCo2">
+              <MappingFragment StoreEntitySet="WeightSegmentCo2">
+                <ScalarProperty Name="EwId" ColumnName="EwId" />
+                <ScalarProperty Name="MMID" ColumnName="MMID" />
+                <ScalarProperty Name="PNO12" ColumnName="PNO12" />
+                <ScalarProperty Name="PWeight" ColumnName="PWeight" />
+                <ScalarProperty Name="SegmentCo2" ColumnName="SegmentCo2" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EfficiencyClassRangeolds">
+            <EntityTypeMapping TypeName="efficiencyclassdevModel.EfficiencyClassRangeold">
+              <MappingFragment StoreEntitySet="EfficiencyClassRangeold">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="VariableTypeId" ColumnName="VariableTypeId" />
+                <ScalarProperty Name="MMID" ColumnName="MMID" />
+                <ScalarProperty Name="StartRange" ColumnName="StartRange" />
+                <ScalarProperty Name="EndRange" ColumnName="EndRange" />
+                <ScalarProperty Name="ValueId" ColumnName="ValueId" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Market2MarketTypeParameterGroup_old">
+            <EntityTypeMapping TypeName="efficiencyclassdevModel.Market2MarketTypeParameterGroup_old">
+              <MappingFragment StoreEntitySet="Market2MarketTypeParameterGroup_old">
+                <ScalarProperty Name="MMId" ColumnName="MMId" />
+                <ScalarProperty Name="MarketId" ColumnName="MarketId" />
+                <ScalarProperty Name="MarketTypeId" ColumnName="MarketTypeId" />
+                <ScalarProperty Name="ParameterGroupId" ColumnName="ParameterGroupId" />
+                <ScalarProperty Name="MYear" ColumnName="MYear" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
